@@ -6,13 +6,13 @@ A command-line tool (CLI) for live monitoring of your system’s key metrics —
 # 🚀 Features
 
 Real-time display of:
-•	CPU Load (%)
-•	RAM usage (used/total GB and %)
-•	Disk usage (used/total GB and %)
-•	Battery level and charging status
-•	Network throughput (RX/TX KB/s)
-•	OS name and version
-•	Uptime (seconds)
+-	CPU Load (%)
+-	RAM usage (used/total GB and %)
+-	Disk usage (used/total GB and %)
+-	Battery level and charging status
+-	Network throughput (RX/TX KB/s)
+-	OS name and version
+-	Uptime (seconds)
 
 ---
 ## 📦 Installation
