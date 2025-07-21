@@ -11,13 +11,11 @@ app.set("view engine", "ejs");
 
 app.use(express.static(path.join(__dirname, "public")));
 
-// صفحه اصلی
 app.get("/", async (req, res) => {
   const snapshot = await getSystemSnapshot();
   res.render("index", { snapshot });
 });
 
-// API endpoint برای دریافت لایو دیتا
 app.get("/api/system", async (req, res) => {
   const snapshot = await getSystemSnapshot();
   res.json(snapshot);

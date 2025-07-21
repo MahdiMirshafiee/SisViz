@@ -4,199 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SysViz - System Monitor</title>
+    
+    <!-- External Dependencies -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
-            color: #fff;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .status {
-            display: inline-block;
-            padding: 5px 15px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 20px;
-            font-size: 0.9rem;
-        }
-
-        .status.live {
-            background: linear-gradient(45deg, #4CAF50, #45a049);
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin-bottom: 20px;
-        }
-
-        .card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 15px;
-            padding: 25px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1, #f9ca24);
-        }
-
-        .card-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .card-header i {
-            font-size: 1.5rem;
-            margin-right: 10px;
-            color: #ffd700;
-        }
-
-        .card-header h2 {
-            font-size: 1.3rem;
-            font-weight: 600;
-        }
-
-        .metric {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .metric:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-        }
-
-        .metric-label {
-            font-size: 0.95rem;
-            opacity: 0.8;
-        }
-
-        .metric-value {
-            font-weight: bold;
-            font-size: 1.1rem;
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 8px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 4px;
-            overflow: hidden;
-            margin-top: 5px;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #4CAF50, #FFC107, #FF5722);
-            border-radius: 4px;
-            transition: width 0.5s ease;
-        }
-
-        .uptime-display {
-            font-family: 'Courier New', monospace;
-            font-size: 1.2rem;
-            text-align: center;
-            background: rgba(0,0,0,0.2);
-            padding: 15px;
-            border-radius: 8px;
-        }
-
-        .network-speed {
-            display: flex;
-            justify-content: space-around;
-            text-align: center;
-        }
-
-        .speed-item {
-            flex: 1;
-        }
-
-        .speed-value {
-            font-size: 1.3rem;
-            font-weight: bold;
-            display: block;
-        }
-
-        .speed-label {
-            font-size: 0.8rem;
-            opacity: 0.7;
-        }
-
-        .loading {
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        .error {
-            color: #ff6b6b;
-            background: rgba(255, 107, 107, 0.1);
-            padding: 10px;
-            border-radius: 5px;
-            margin-top: 10px;
-        }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    
+    <!-- Meta Tags for Better Performance -->
+    <meta name="description" content="Real-time system monitoring dashboard">
+    <meta name="theme-color" content="#00b894">
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1><i class="fas fa-desktop"></i> SysViz</h1>
+            <h1>SysViz</h1>
             <div class="status live" id="status">
                 <i class="fas fa-circle"></i> Live Monitoring
             </div>
@@ -214,7 +39,7 @@
                     <span class="metric-value" id="cpu-load"><%= snapshot.cpu.load %>%</span>
                 </div>
                 <div class="progress-bar">
-                    <div class="progress-fill" id="cpu-progress" "></div>
+                    <div class="progress-fill" id="cpu-progress"></div>
                 </div>
             </div>
 
@@ -286,7 +111,7 @@
                 </div>
                 <% if (snapshot.battery.percent !== 'N/A' && !isNaN(snapshot.battery.percent)) { %>
                 <div class="progress-bar">
-                    <div class="progress-fill" id="battery-progress" ></div>
+                    <div class="progress-fill" id="battery-progress"></div>
                 </div>
                 <% } %>
             </div>
@@ -327,6 +152,7 @@
         </div>
     </div>
 
+    <!-- Scripts -->
     <script src="/js/main.js"></script>
 </body>
 </html>
