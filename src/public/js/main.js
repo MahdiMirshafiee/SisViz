@@ -138,7 +138,7 @@ async function updateSystemData() {
 
 function startLiveUpdates() {
   updateSystemData();
-  updateInterval = setInterval(updateSystemData, 3000);
+  updateInterval = setInterval(updateSystemData, 1000);
 
   setInterval(updateUptime, 1000);
 }

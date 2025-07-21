@@ -9,10 +9,10 @@
     --primary-grey: #2d3436;
     --secondary-grey: #636e72;
     --light-grey: #b2bec3;
-    --accent-green: #1576ae;
-    --bright-green: #29d3ed;
-    --success-green: #1c8ed5;
-    --warning-green: #06216b;
+    --accent-blue: #1576ae;
+    --bright-blue: #29d3ed;
+    --success-blue: #1c8ed5;
+    --warning-blue: #06216b;
     --background-gradient: linear-gradient(135deg, #2d3436 0%, #1a1c1f 100%);
     --card-bg: rgba(45, 52, 54, 0.9);
     --card-border: rgba(178, 190, 195, 0.1);
@@ -52,7 +52,7 @@ body {
     transform: translate(-50%, -50%);
     width: 200px;
     height: 200px;
-    background: radial-gradient(circle, var(--accent-green) 0%, transparent 70%);
+    background: radial-gradient(circle, var(--accent-blue) 0%, transparent 70%);
     opacity: 0.1;
     border-radius: 50%;
     z-index: -1;
@@ -62,7 +62,7 @@ body {
     font-size: clamp(2rem, 5vw, 3rem);
     font-weight: 700;
     margin-bottom: 1rem;
-    background: linear-gradient(135deg, var(--accent-green), var(--bright-green));
+    background: linear-gradient(135deg, var(--accent-blue), var(--bright-blue));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -71,7 +71,7 @@ body {
 }
 
 .header h1 i {
-    color: var(--accent-green);
+    color: var(--accent-blue);
     margin-right: 0.5rem;
     filter: drop-shadow(0 0 10px rgba(0, 184, 148, 0.3));
 }
@@ -91,14 +91,15 @@ body {
 }
 
 .status.live {
-    background: linear-gradient(135deg, var(--success-green), var(--accent-green));
-    border: 1px solid var(--accent-green);
+    background: linear-gradient(135deg, var(--success-blue), var(--accent-blue));
+    border: 1px solid var(--accent-blue);
     animation: statusPulse 3s infinite;
 }
 
 .status.error {
     background: linear-gradient(135deg, #e74c3c, #c0392b);
     border: 1px solid #e74c3c;
+    color: yellow;
 }
 
 .status i {
@@ -142,9 +143,9 @@ body {
     right: 0;
     height: 2px;
     background: linear-gradient(90deg, 
-        var(--accent-green) 0%, 
-        var(--bright-green) 50%, 
-        var(--warning-green) 100%);
+        var(--accent-blue) 0%, 
+        var(--bright-blue) 50%, 
+        var(--warning-blue) 100%);
     opacity: 0.8;
 }
 
@@ -155,7 +156,7 @@ body {
     right: -50%;
     width: 100px;
     height: 100px;
-    background: radial-gradient(circle, var(--accent-green) 0%, transparent 70%);
+    background: radial-gradient(circle, var(--accent-blue) 0%, transparent 70%);
     opacity: 0.05;
     border-radius: 50%;
     transition: all 0.4s ease;
@@ -184,7 +185,7 @@ body {
 .card-header i {
     font-size: 1.5rem;
     margin-right: 0.75rem;
-    color: var(--accent-green);
+    color: var(--accent-blue);
     padding: 0.5rem;
     background: var(--overlay);
     border-radius: 8px;
@@ -264,9 +265,9 @@ body {
 .progress-fill {
     height: 100%;
     background: linear-gradient(90deg, 
-        var(--success-green) 0%, 
-        var(--accent-green) 50%, 
-        var(--bright-green) 100%);
+        var(--success-blue) 0%, 
+        var(--accent-blue) 50%, 
+        var(--bright-blue) 100%);
     border-radius: 3px;
     transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
@@ -287,7 +288,7 @@ body {
     border: 1px solid rgba(0, 184, 148, 0.2);
     padding: 1rem;
     border-radius: 8px;
-    color: var(--accent-green);
+    color: var(--accent-blue);
     letter-spacing: 0.5px;
     position: relative;
     overflow: hidden;
@@ -338,7 +339,7 @@ body {
     font-size: 1.4rem;
     font-weight: 700;
     display: block;
-    color: var(--accent-green);
+    color: var(--accent-blue);
     margin-bottom: 0.25rem;
 }
 
@@ -419,16 +420,16 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--accent-green);
+    background: var(--accent-blue);
     border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: var(--bright-green);
+    background: var(--bright-blue);
 }
 
 .card:focus-within {
-    outline: 2px solid var(--accent-green);
+    outline: 2px solid var(--accent-blue);
     outline-offset: 2px;
 }
 
