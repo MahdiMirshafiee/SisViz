@@ -1,5 +1,6 @@
 const express = require("express");
 const path = require("path");
+const {getSystemSnapshot} = require("./services/sysinfo.js")
 require("dotenv").config();
 
 const app = express();
@@ -13,5 +14,5 @@ app.get("/", (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`SizViz listening on PORT http://localhost:${PORT}`);
+  console.log(`SizViz Active on PORT ${PORT} http://localhost:${PORT}`);
 });
