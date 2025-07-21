@@ -1,10 +1,28 @@
+#!/usr/bin/env node
+
+const args = process.argv.slice(2);
+
+if (args.includes('--help') || args.includes('-h')) {
+  console.log(`
+sisviz - System Information Visualization CLI
+
+Usage:
+  sisviz             Start the monitoring dashboard
+  sisviz --help      Show this help message
+
+Options:
+  -h, --help         Display this help information
+  --port <number>    Set custom port (default: 3000)
+`);
+  process.exit(0);
+}
+
 const express = require("express");
 const path = require("path");
 const { getSystemSnapshot } = require("./services/sysinfo.js");
-require("dotenv").config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = 3000;
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");

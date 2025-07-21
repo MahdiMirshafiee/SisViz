@@ -1,17 +1,23 @@
 {
   "name": "sisviz",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "main": "index.js",
   "scripts": {
     "start": "node src/server.js",
     "dev": "nodemon src/server.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
+  "keywords": ["cli", "system info", "monitoring", "server", "nodejs"],
+  "author": "Mahdi Mirshafiee",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MahdiMirshafiee/SisViz"
+  },
+  "license": "MIT",
+  "description": "A system information visualization CLI tool for monitoring CPU, RAM, Disk, Battery, Network, OS, and Uptime.",
+  "bin": {
+    "sisviz": "./src/server.js"
+  },
   "dependencies": {
-    "dotenv": "^17.2.0",
     "ejs": "^3.1.10",
     "express": "^5.1.0",
     "systeminformation": "^5.27.7"
