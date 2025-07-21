@@ -26,7 +26,7 @@ npm install -g sisviz
 ```bash
 sisviz
 ```
-# ![Screenshot](./public/photos/sisviz.png)
+# ![Screenshot](/src/public/photos/sisviz.png)
 
 ---
 ## 🆘 Help
