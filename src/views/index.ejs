@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+      </head>
+    </head>
+    <body>
+      <div class="section">
+        <h2><i class="fa-solid fa-microchip"></i> CPU</h2>
+        <p>Load: <%= snapshot.cpu.load %>%</p>
+      </div>
+    
+      <div class="section">
+        <h2> RAM</h2>
+        <p>Total: <%= snapshot.ram.total %> GB</p>
+        <p>Used: <%= snapshot.ram.used %> GB</p>
+        <p>Usage: <%= snapshot.ram.percent %>%</p>
+      </div>
+    
+      <div class="section">
+        <h2><i class="fa-solid fa-hard-drive"></i> Disk</h2>
+        <p>Total: <%= snapshot.disk.total %> GB</p>
+        <p>Used: <%= snapshot.disk.used %> GB</p>
+        <p>Usage: <%= snapshot.disk.percent %>%</p>
+      </div>
+    
+      <div class="section">
+        <h2><i class="fa-solid fa-battery-three-quarters"></i> Battery</h2>
+        <p>Percent: <%= snapshot.battery.percent %>%</p>
+        <p>Charging: <%= snapshot.battery.isCharging ? "Yes" : "No" %></p>
+      </div>
+    
+      <div class="section">
+        
+        <h2><i class="fa-solid fa-globe"></i> Network</h2>
+        <p><i class="fa-solid fa-download"></i> Download (rx): <%= snapshot.network.rx %> KB/s</p>
+        <p><i class="fa-solid fa-upload"></i> Upload (tx): <%= snapshot.network.tx %> KB/s</p>
+      </div>
+    
+      <div class="section">
+        <h2><i class="fa-solid fa-laptop"></i> OS</h2>
+        <p><%= snapshot.os %></p>
+      </div>
+    
+      <div class="section">
+        <h2><i class="fa-solid fa-hourglass-start"></i> Uptime</h2>
+        <p><%= snapshot.uptime %> seconds</p>
+      </div>
+    </body>
+    </html>
