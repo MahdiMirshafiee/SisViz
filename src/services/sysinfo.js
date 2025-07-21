@@ -3,26 +3,32 @@ const os = require("os");
 
 async function getSystemSnapshot() {
   try {
-    const [cpu, mem, disks, battery, networks, osInfo, uptime] = await Promise.all([
-      si.currentLoad(),
-      si.mem(),
-      si.fsSize(),
-      si.battery(),
-      si.networkStats(),
-      si.osInfo(),
-      si.time(),
-    ]);
+    const [cpu, mem, disks, battery, networks, osInfo, uptime] =
+      await Promise.all([
+        si.currentLoad(),
+        si.mem(),
+        si.fsSize(),
+        si.battery(),
+        si.networkStats(),
+        si.osInfo(),
+        si.time(),
+      ]);
 
     const platform = os.platform();
 
     let mainMount;
     if (platform === "win32") {
-      mainMount = disks.find(d => d.mount.toUpperCase() === "C:" || d.fs.toUpperCase().startsWith("C:"))?.mount || "C:";
+      mainMount =
+        disks.find(
+          (d) =>
+            d.mount.toUpperCase() === "C:" ||
+            d.fs.toUpperCase().startsWith("C:")
+        )?.mount || "C:";
     } else {
       mainMount = "/";
     }
 
-    const mainDisk = disks.find(d => d.mount === mainMount);
+    const mainDisk = disks.find((d) => d.mount === mainMount);
 
     let diskInfo = {
       total: "N/A",
@@ -30,10 +36,13 @@ async function getSystemSnapshot() {
       percent: "N/A",
     };
     if (mainDisk) {
-      const used = typeof mainDisk.available === "number" ? mainDisk.size - mainDisk.available : mainDisk.used;
+      const used =
+        typeof mainDisk.available === "number"
+          ? mainDisk.size - mainDisk.available
+          : mainDisk.used;
       diskInfo = {
-        total: (mainDisk.size / 1e9).toFixed(1),
-        used: (used / 1e9).toFixed(1),
+        total: (mainDisk.size / 1024 ** 3).toFixed(1),
+        used: (used / 1024 ** 3).toFixed(1),
         percent: ((used / mainDisk.size) * 100).toFixed(1),
       };
     }
@@ -44,8 +53,8 @@ async function getSystemSnapshot() {
     return {
       cpu: { load: cpu.currentLoad.toFixed(1) },
       ram: {
-        total: (mem.total / 1e9).toFixed(1),
-        used: (mem.used / 1e9).toFixed(1),
+        total: (mem.total / 1024 ** 3).toFixed(1),
+        used: (mem.used / 1024 ** 3).toFixed(1),
         percent: ((mem.used / mem.total) * 100).toFixed(1),
       },
       disk: diskInfo,
@@ -54,7 +63,7 @@ async function getSystemSnapshot() {
         isCharging: battery.hasBattery ? battery.isCharging : "N/A",
       },
       network: {
-        rx: (totalRx / 1024).toFixed(1), 
+        rx: (totalRx / 1024).toFixed(1),
         tx: (totalTx / 1024).toFixed(1),
       },
       os: `${osInfo.distro} ${osInfo.release}`,
