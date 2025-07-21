@@ -12,7 +12,6 @@ Usage:
 
 Options:
   -h, --help         Display this help information
-  --port <number>    Set custom port (default: 3000)
 `);
   process.exit(0);
 }
